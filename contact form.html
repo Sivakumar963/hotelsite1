@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CONTACT form</title>
+  <link rel="stylesheet" href="cont.css">
+  <script>
+    function validateForm() {
+      var name = document.querySelector('input[type="text"]');
+      var email = document.querySelector('input[type="email"]');
+      var subject = document.querySelector('input[type="text"][col=""]');
+      
+      if (name.value.trim().length <=2) {
+        alert("Name field cannot be empty");
+        name.focus();
+        return false;
+      }
+      
+      if (email.value.trim() === '') {
+        alert("Email field cannot be empty");
+        email.focus();
+        return false;
+      } else {
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email.value)) {
+          alert("Invalid email format");
+          email.focus();
+          return false;
+        }
+      }
+      
+      if (subject.value.trim().length <=2) {
+        alert("Subject field cannot be empty");
+        subject.focus();
+        return false;
+      }
+      
+      return true; 
+    }
+  </script>
+</head>
+<body>
+  <div class="header">
+    <h3>contact us</h3>
+    <form action="sucess.html" onsubmit="return validateForm()">
+      <div class="input-box">
+        <label>Name</label>&nbsp;
+        <input type="text" placeholder="Enter name" required>
+      </div>
+      <div class="col">
+        <div class="input-box">
+          <label>Mail</label>&nbsp;&nbsp;&nbsp;
+          <input type="email" placeholder="Enter mail" required>
+        </div>
+      </div>
+      <div class="input-box">
+        <label>Subject</label>
+        <input type="text" col="" placeholder="Enter queries" required>
+      </div>
+      <input type="Submit" class="btn" value="Submit">
+    </form>
+  </div>
+</body>
+</html>
